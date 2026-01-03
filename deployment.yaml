@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: explo-web-deployment
+  labels:
+    app: explo-static-site
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: explo-static-site
+  template:
+    metadata:
+      labels:
+        app: explo-static-site
+    spec:
+      containers:
+      - name: web-container
+        # Replace 'your-username' with your Docker Hub or GHCR username
+        image: greenlanterna/explo-site:v1
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "200m"

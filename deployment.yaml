@@ -5,6 +5,7 @@ metadata:
   labels:
     app: explo-static-site
 spec:
+  # Maintain 3 replicas for high availability on Flux
   replicas: 3
   selector:
     matchLabels:
@@ -16,11 +17,12 @@ spec:
     spec:
       containers:
       - name: web-container
-        # Replace 'your-username' with your Docker Hub or GHCR username
-        image: greenlanterna/explo-site:v1
+        # Using version v3 to enable the Node.js server and Telegram notifications
+        image: greenlanterna/explo-site:v3
         ports:
         - containerPort: 80
         resources:
           limits:
             memory: "128Mi"
             cpu: "200m"
+        imagePullPolicy: Always

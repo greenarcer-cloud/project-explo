@@ -18,7 +18,7 @@ spec:
       containers:
       - name: web-container
         # Using version v3 to enable the Node.js server and Telegram notifications
-        image: greenlanterna/explo-site:v3
+        image: greenlanterna/explo-site:v4
         ports:
         - containerPort: 80
         resources:
